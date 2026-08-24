@@ -1,0 +1,170 @@
+{
+  "project": "GeneLit-RAG",
+  "subtitle": "Gene-Disease-Drug evidence assistant over PubMed",
+  "updated": "2026-08-24T10:57:43.467638+00:00",
+  "phases": [
+    {
+      "name": "0 \u00b7 Scope & Feasibility",
+      "tasks": [
+        {
+          "task": "Pick bounded sub-domain (oncology genomics / driver genes)",
+          "done": false
+        },
+        {
+          "task": "Define 3-5 target question types to evaluate",
+          "done": false
+        },
+        {
+          "task": "Confirm Colab access to both GPU and TPU runtimes",
+          "done": true
+        },
+        {
+          "task": "Set Drive checkpoint + model-weight cache paths",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "1 \u00b7 Dataset Acquisition",
+      "tasks": [
+        {
+          "task": "Define & document domain filter (MeSH + keywords + date range)",
+          "done": false
+        },
+        {
+          "task": "Pull corpus via NCBI E-utilities -> Drive as Parquet (300k-800k)",
+          "done": true
+        },
+        {
+          "task": "Download PubMedQA (PQA-L) + BioASQ Task B to Drive",
+          "done": true
+        },
+        {
+          "task": "Read NLM terms of use (if using the FTP baseline)",
+          "done": true
+        }
+      ]
+    },
+    {
+      "name": "2 \u00b7 Preprocessing & Chunking",
+      "tasks": [
+        {
+          "task": "Drop empty-abstract & non-English records (log counts)",
+          "done": true
+        },
+        {
+          "task": "Remove near-duplicate records",
+          "done": true
+        },
+        {
+          "task": "Retain & verify metadata (PMID, year, MeSH, pub type) non-null",
+          "done": true
+        },
+        {
+          "task": "Decide gene-synonym normalization: v1 or stretch goal",
+          "done": false
+        },
+        {
+          "task": "Produce cleaned Parquet (title+abstract per row) for Stage 3",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "3 \u00b7 Embedding & Vector Index (TPU)",
+      "tasks": [
+        {
+          "task": "Run MedCPT Article Encoder on a small sample first (verify)",
+          "done": false
+        },
+        {
+          "task": "Embed full corpus in checkpointed shards, persist each to Drive",
+          "done": false
+        },
+        {
+          "task": "Maintain manifest of completed shards (resumable reruns)",
+          "done": false
+        },
+        {
+          "task": "Build FAISS index over all embeddings, save to Drive",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "4 \u00b7 Retrieval & Reranking",
+      "tasks": [
+        {
+          "task": "Encode queries with MedCPT Query Encoder (not Article Encoder)",
+          "done": false
+        },
+        {
+          "task": "Two-pass: dense top-k (50-100) -> cross-encoder rerank -> top 5-8",
+          "done": false
+        },
+        {
+          "task": "Decide metadata pre-filtering for gene-specific questions",
+          "done": false
+        },
+        {
+          "task": "Manual spot-check: gold PMID surfaced for 10-15 questions",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "5 \u00b7 Generation & LLM (GPU)",
+      "tasks": [
+        {
+          "task": "Load BioMistral-7B in 4-bit on T4, verify on manual questions",
+          "done": false
+        },
+        {
+          "task": "Prompt: context-only + inline PMID citations + evidence-strength",
+          "done": false
+        },
+        {
+          "task": "Post-gen check flags cited PMID not in retrieved context",
+          "done": false
+        },
+        {
+          "task": "Implement documented insufficient-evidence refusal threshold",
+          "done": false
+        },
+        {
+          "task": "State research-tool-only framing in the write-up",
+          "done": false
+        },
+        {
+          "task": "Build Gradio demo (shareable Colab link)",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "6 \u00b7 Evaluation & Benchmarking",
+      "tasks": [
+        {
+          "task": "Compute Recall@5 / Recall@10, broken down by question category",
+          "done": false
+        },
+        {
+          "task": "Compute RAGAS faithfulness + answer-relevance on a sample",
+          "done": false
+        },
+        {
+          "task": "PubMedQA yes/no/maybe accuracy vs published baselines",
+          "done": false
+        },
+        {
+          "task": "Manual error analysis (retrieval vs reranking vs generation)",
+          "done": false
+        },
+        {
+          "task": "Write results report + one honest refusal example",
+          "done": false
+        }
+      ]
+    }
+  ]
+}
