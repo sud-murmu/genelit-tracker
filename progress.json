@@ -1,7 +1,7 @@
 {
   "project": "GeneLit-RAG",
   "subtitle": "Gene-Disease-Drug evidence assistant over PubMed",
-  "updated": "2026-08-24T10:57:43.467638+00:00",
+  "updated": "2026-08-24T10:59:55.845187+00:00",
   "phases": [
     {
       "name": "0 \u00b7 Scope & Feasibility",
@@ -58,7 +58,7 @@
         },
         {
           "task": "Retain & verify metadata (PMID, year, MeSH, pub type) non-null",
-          "done": true
+          "done": false
         },
         {
           "task": "Decide gene-synonym normalization: v1 or stretch goal",
