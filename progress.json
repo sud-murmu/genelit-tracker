@@ -1,7 +1,7 @@
 {
   "project": "GeneLit-RAG",
   "subtitle": "Gene-Disease-Drug evidence assistant over PubMed",
-  "updated": "2026-08-24T10:59:55.845187+00:00",
+  "updated": "2026-08-24T13:53:12.262236+00:00",
   "phases": [
     {
       "name": "0 \u00b7 Scope & Feasibility",
@@ -20,7 +20,7 @@
         },
         {
           "task": "Set Drive checkpoint + model-weight cache paths",
-          "done": false
+          "done": true
         }
       ]
     },
