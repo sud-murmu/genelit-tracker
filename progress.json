@@ -1,7 +1,7 @@
 {
   "project": "GeneLit-RAG",
   "subtitle": "Gene-Disease-Drug evidence assistant over PubMed",
-  "updated": "2026-08-29T04:31:31.453757+00:00",
+  "updated": "2026-08-29T05:23:32.287904+00:00",
   "phases": [
     {
       "name": "0 \u00b7 Scope & Feasibility",
@@ -62,7 +62,7 @@
         },
         {
           "task": "Decide gene-synonym normalization: v1 or stretch goal",
-          "done": true
+          "done": false
         },
         {
           "task": "Produce cleaned Parquet (title+abstract per row) for Stage 3",
